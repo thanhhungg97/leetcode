@@ -1,5 +1,8 @@
 package org.example;
 
+/**
+ * #{@link SearchInRotatedSortedArray} for explain
+ */
 public class FindMinimumInRotateArray {
     public int findMin(int[] nums) {
         return findMid(nums);
