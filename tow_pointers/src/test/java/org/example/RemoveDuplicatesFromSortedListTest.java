@@ -8,6 +8,14 @@ class RemoveDuplicatesFromSortedListTest {
 
     @Test
     void testcase1() {
-        Assertions.assertTrue(ListNode.fromArray(new int[]{1, 2, 5}).equals(sut.deleteDuplicates(ListNode.fromArray(new int[]{1, 2, 3, 3, 4, 4, 5}))));
+        Assertions.assertTrue(ListNode.fromArray(new int[]{1, 2, 3, 4, 5}).equals(sut.deleteDuplicates(ListNode.fromArray(new int[]{1, 2, 3, 3, 4, 4, 5}))));
+    }
+    @Test
+    void testcase2() {
+        Assertions.assertTrue(ListNode.fromArray(new int[]{1, 2}).equals(sut.deleteDuplicates(ListNode.fromArray(new int[]{1, 1, 2}))));
+    }
+    @Test
+    void testcase3() {
+        Assertions.assertTrue(ListNode.fromArray(new int[]{1}).equals(sut.deleteDuplicates(ListNode.fromArray(new int[]{1}))));
     }
 }
