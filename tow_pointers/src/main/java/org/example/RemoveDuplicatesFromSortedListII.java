@@ -1,13 +1,10 @@
 package org.example;
 
 /**
- * 1 -> 2 -> 3 -> 3 -> 4 -> 4 -> 5
- * head
- * tmp = head
- * cur = tmp
- * while cur.value = cur.next.value => cur = cur.next
- * tmp.next = cur;
- * tmp = tmp.next
+ * Using sentinel head to handle case the head will delete
+ * 9 -> 9 -> 9 -> null
+ * The primary purpose is to standarlize the situation to avoid edge case handling.
+ * Using predecessor to keep track the last value after we the duplicated.
  */
 public class RemoveDuplicatesFromSortedListII {
     public ListNode deleteDuplicates(ListNode head) {
@@ -16,16 +13,22 @@ public class RemoveDuplicatesFromSortedListII {
     }
     // Not done
 
+
     private ListNode deleteDuplicate(ListNode head) {
-        ListNode tmp = head;
-        while (tmp != null) {
-            ListNode cur = tmp;
-            while (cur.next != null && cur.val == cur.next.val) {
-                cur = cur.next;
+        ListNode sentinel = new ListNode(-1, head);
+        ListNode pre = sentinel;
+
+        while (head != null) {
+            if (head.next != null && head.next.val == head.val) {
+                while (head.next != null && head.next.val == head.val) {
+                    head = head.next;
+                }
+                pre.next = head.next;
+            } else {
+                pre = pre.next;
             }
-            tmp.next = cur.next;
-            tmp = tmp.next;
+            head = head.next;
         }
-        return head;
+        return sentinel.next;
     }
 }
