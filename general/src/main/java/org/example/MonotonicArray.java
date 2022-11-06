@@ -1,5 +1,5 @@
 package org.example;
-
+//https://leetcode.com/problems/monotonic-array/description/
 public class MonotonicArray {
     public boolean isMonotonic(int[] nums) {
         boolean increasing = true;
