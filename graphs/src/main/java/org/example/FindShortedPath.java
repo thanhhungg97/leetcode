@@ -9,5 +9,4 @@ public class FindShortedPath {
     void goodString(int first, int second, int n) {
     }
 
-
 }
