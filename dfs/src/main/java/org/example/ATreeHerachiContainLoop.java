@@ -70,4 +70,26 @@ public class ATreeHerachiContainLoop {
         return false;
     }
 
+    boolean dfsWithHashMap(Map<Integer, Integer> map) {
+        for (Map.Entry<Integer, Integer> test : map.entrySet()) {
+            if (dfs(map, test.getKey(), new HashSet<>())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    boolean dfs(Map<Integer, Integer> map, Integer key, Set<Integer> m) {
+        Integer tmpKey = map.get(key);
+        if (tmpKey == null) {
+            return false;
+        }
+        if (m.contains(key)) {
+            return true;
+        }
+        m.add(key);
+        return dfs(map, tmpKey, m);
+
+    }
 }

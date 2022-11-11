@@ -3,7 +3,9 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class AGraphContainLoopTest {
     ATreeHerachiContainLoop sut = new ATreeHerachiContainLoop();
@@ -34,5 +36,14 @@ class AGraphContainLoopTest {
         treeNode1.setChills(List.of());
         treeNode3.setChills(List.of());
         Assertions.assertFalse(sut.verifyLoop(treeNode));
+    }
+
+    @Test
+    void testcase3() {
+        Map<Integer , Integer > m = new HashMap<>();
+        m.put(1, 2);
+        m.put(2, 3);
+
+        Assertions.assertFalse(sut.dfsWithHashMap(m));
     }
 }
