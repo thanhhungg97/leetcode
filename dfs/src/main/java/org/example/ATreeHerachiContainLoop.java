@@ -36,25 +36,38 @@ class TreeNode {
 
 public class ATreeHerachiContainLoop {
     public boolean verifyLoop(TreeNode treeNode) {
-        return dfs(treeNode, new HashSet<>());
+        return dfsWithQueue(treeNode, new HashSet<>());
 
     }
 
     boolean dfs(TreeNode treeNode, Set<TreeNode> m) {
-        if (treeNode == null) {
-            return false;
-        }
+
         if (m.contains(treeNode)) {
             return true;
         }
         m.add(treeNode);
-        return treeNode
-                .getChills()
-                .stream()
-                .map(item -> dfs(item, m)).toList()
-                .stream()
-                .anyMatch(item -> item);
+        List<TreeNode> chills = treeNode.getChills();
 
+        boolean isCyclic = false;
+        for (var chill : chills) {
+            isCyclic = isCyclic || dfs(chill, m);
+        }
 
+        return isCyclic;
     }
+
+    boolean dfsWithQueue(TreeNode treeNode, Set<TreeNode> m) {
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(treeNode);
+        while (!queue.isEmpty()) {
+            TreeNode poll = queue.poll();
+            if (m.contains(poll)) {
+                return true;
+            }
+            m.add(poll);
+            queue.addAll(poll.getChills());
+        }
+        return false;
+    }
+
 }

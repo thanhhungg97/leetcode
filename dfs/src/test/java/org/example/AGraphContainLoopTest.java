@@ -17,7 +17,7 @@ class AGraphContainLoopTest {
 
         treeNode.setChills(List.of(treeNode1, treeNode2));
         treeNode2.setChills(List.of(treeNode3));
-        treeNode3.setChills(List.of(treeNode));
+        treeNode3.setChills(List.of(treeNode2));
         treeNode1.setChills(List.of());
         Assertions.assertTrue(sut.verifyLoop(treeNode));
     }
