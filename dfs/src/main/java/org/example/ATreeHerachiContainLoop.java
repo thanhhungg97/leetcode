@@ -10,6 +10,13 @@ class TreeNode {
         this.value = value;
     }
 
+
+    TreeNode(Map<Integer, Integer> map){
+
+        map.entrySet().forEach(item -> {
+                
+        });
+    }
     List<TreeNode> chills;
 
     public void setChills(List<TreeNode> chills) {
@@ -19,6 +26,7 @@ class TreeNode {
     public List<TreeNode> getChills() {
         return chills;
     }
+
 
     @Override
     public boolean equals(Object o) {
