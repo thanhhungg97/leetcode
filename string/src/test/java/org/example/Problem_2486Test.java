@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class Problem_2486Test {
 
-    Problem_2486 sut = new Problem_2486();
+    AppendCharacters sut = new AppendCharacters();
 
 
     @Test

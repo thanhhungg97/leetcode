@@ -3,10 +3,8 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class Problem_647Test {
-    Problem_647 sut = new Problem_647();
+    CountSubString sut = new CountSubString();
 
 
     @Test

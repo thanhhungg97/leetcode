@@ -3,7 +3,7 @@ package org.example;
 /**
  * Palindromic Substrings counting
  */
-public class Problem_647 {
+public class CountSubString {
     public int countSubstrings(String s) {
         int count = 0;
         for (int i = 0; i < s.length(); i++) {

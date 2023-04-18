@@ -3,7 +3,7 @@ package org.example;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Problem_205 {
+public class CheckIsmorphic {
     public boolean isIsomorphic(String s, String t) {
         return check(s, t) && check(t, s);
     }

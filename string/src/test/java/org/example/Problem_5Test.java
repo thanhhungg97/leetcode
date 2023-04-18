@@ -3,10 +3,8 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class Problem_5Test {
-    Problem_5 sut = new Problem_5();
+    LongestPalindrome sut = new LongestPalindrome();
 
     @Test
     void test() {

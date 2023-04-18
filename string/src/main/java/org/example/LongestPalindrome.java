@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Problem_5 {
+public class LongestPalindrome {
 
 
     public String longestPalindrome(String s) {

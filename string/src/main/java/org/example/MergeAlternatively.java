@@ -1,6 +1,6 @@
 package org.example;
 
-public class Problem_1768 {
+public class MergeAlternatively {
     public String mergeAlternately(String word1, String word2) {
         int i = 0;
         int j = 0;

@@ -3,10 +3,8 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class Problem_1768Test {
-    Problem_1768 sut = new Problem_1768();
+    MergeAlternatively sut = new MergeAlternatively();
 
     @Test
     void test(){

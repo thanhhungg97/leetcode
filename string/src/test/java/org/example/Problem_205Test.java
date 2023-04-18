@@ -3,10 +3,8 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class Problem_205Test {
-    Problem_205 sut = new Problem_205();
+    CheckIsmorphic sut = new CheckIsmorphic();
 
 
     @Test
