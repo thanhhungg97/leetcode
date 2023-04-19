@@ -1,11 +1,16 @@
 package org.example;
 
 public class PermutationInString {
+    /**
+     * Time complexity O(m*n)
+     * Space complexity O(n)
+     */
+
     public boolean checkInclusion(String s1, String s2) {
         if (s2.length() < s1.length()) {
             return false;
         }
-        for (int i = 0; i <= s2.length() - s1.length(); i++) {
+        for (int i = 0; i <= s2.length() - s1.length(); i++) {// m - n  -> ( m - n ) * n =  m * n
             if (isAnagram(s1, s2, i)) {
                 return true;
             }
@@ -13,7 +18,7 @@ public class PermutationInString {
         return false;
     }
 
-    boolean isAnagram(String s1, String s2, int left) {
+    boolean isAnagram(String s1, String s2, int left) { // n
         int[] hash = new int[128];
         for (int i = 0; i < s1.length(); i++) {
             hash[s1.charAt(i)]++;
