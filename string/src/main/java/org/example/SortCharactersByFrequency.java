@@ -15,5 +15,6 @@ public class SortCharactersByFrequency {
 
             }
         }
+        return  null;
     }
 }
