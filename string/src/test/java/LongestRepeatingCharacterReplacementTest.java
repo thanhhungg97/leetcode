@@ -10,12 +10,26 @@ class LongestRepeatingCharacterReplacementTest {
         int abab = sut.characterReplacement("ABAB", 2);
         Assertions.assertEquals(4, abab);
     }
+
     @Test
     void test1() {
-        sut.characterReplacement("AABABBA", 4);
+
+
+        int aababba = sut.characterReplacement("AABABBA", 4);
+
+        Assertions.assertEquals(4, aababba);
     }
+
     @Test
     void test2() {
-        sut.characterReplacement("AABABBABBBBA", 4);
+        int aababbabbbba = sut.characterReplacement("AABABBABBBBA", 4);
+        Assertions.assertEquals(1,1);
+    }
+
+    @Test
+    void test3() {
+        int abbbba = sut.characterReplacement("ABBBBA", 2);
+
+        Assertions.assertEquals(6, abbbba);
     }
 }

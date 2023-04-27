@@ -1,37 +1,41 @@
 package org.example;
 
+import java.util.Map;
+
 public class LongestRepeatingCharacterReplacement {
     public int characterReplacement(String s, int k) {
-        int max = 0;
+        Integer result = 0;
         for (int i = 0; i < s.length(); i++) {
-            int tmp = k;
-            int j = i + 1;
-            while (j < s.length() && tmp > 0) {
-                if (s.charAt(j) != s.charAt(i)) {
-                    tmp--;
+            for (int j = i + 1; j < s.length(); j++) {
+                int b = j + 1 - i;
+                if( b >= k){
+                    result = Math.max(result, b);
                 }
-                j++;
-            }
-            while (j < s.length() && s.charAt(j) == s.charAt(i)) {
-                j++;
-            }
-            max = Math.max(max, j - i);
-        }
+                else{
+                    if (canReplace(s.substring(i, j + 1), k)) {
 
-        for (int i = s.length() - 1; i >= 0; i--) {
-            int tmp = k;
-            int j = i -  1;
-            while (j >= 0 && tmp > 0) {
-                if (s.charAt(j) != s.charAt(i)) {
-                    tmp--;
+                        result = Math.max(result, b);
+
+                    }
                 }
-                j--;
+
+
             }
-            while (j >= 0 && s.charAt(j) == s.charAt(i)) {
-                j--;
-            }
-            max = Math.max(max, i - j);
         }
-        return max;
+        return result;
+    }
+
+    private boolean canReplace(String substring, int k) {
+        int[] hash = new int[128];
+        char[] chars = substring.toCharArray();
+        int max = 0;
+        for (char aChar : chars) {
+            hash[aChar]++;
+            max = Math.max(hash[aChar], max);
+        }
+        if (substring.length() - max <= k) {
+            return true;
+        }
+        return false;
     }
 }
