@@ -1,41 +1,36 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class LongestRepeatingCharacterReplacement {
     public int characterReplacement(String s, int k) {
-        Map<Character, List<Integer>> map = new HashMap<>(
-        );
-
-        char[] chars = s.toCharArray();
-
-        for (int i = 0; i < chars.length; i++) {
-            if (!map.containsKey(chars[i])) {
-                map.put(chars[i], new ArrayList<>());
-            }
-            map.get(chars[i]).add(i);
-        }
         int max = 0;
-        for (Map.Entry<Character, List<Integer>> characterListEntry : map.entrySet()) {
-            List<Integer> itemValue = characterListEntry.getValue();
+        for (int i = 0; i < s.length(); i++) {
             int tmp = k;
-            int curMax = 1;
-            for (int i = 1; i < itemValue.size(); i++) {
-                if (tmp > itemValue.get(i) - itemValue.get(i - 1) - 1) {
-                    curMax += itemValue.get(i) - itemValue.get(i - 1);
-                    tmp -= itemValue.get(i) - itemValue.get(i - 1) - 1;
-                } else {
-                    curMax += tmp;
-                    break;
+            int j = i + 1;
+            while (j < s.length() && tmp > 0) {
+                if (s.charAt(j) != s.charAt(i)) {
+                    tmp--;
                 }
+                j++;
             }
-            if (tmp > s.length() - itemValue.get(itemValue.size() - 1) - 1) {
-                curMax += tmp;
+            while (j < s.length() && s.charAt(j) == s.charAt(i)) {
+                j++;
             }
-            max = Math.max(max, curMax);
+            max = Math.max(max, j - i);
+        }
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int tmp = k;
+            int j = i -  1;
+            while (j >= 0 && tmp > 0) {
+                if (s.charAt(j) != s.charAt(i)) {
+                    tmp--;
+                }
+                j--;
+            }
+            while (j >= 0 && s.charAt(j) == s.charAt(i)) {
+                j--;
+            }
+            max = Math.max(max, i - j);
         }
         return max;
     }

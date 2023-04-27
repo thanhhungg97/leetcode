@@ -44,8 +44,6 @@ public class FindUniqueBinaryString {
                 return dfs;
             }
             String dfs1 = dfs(nums, i + 1, length, s + "1");
-
-
             if (!Objects.equals(dfs1, "")) {
                 return dfs1;
             }
