@@ -8,7 +8,7 @@ public class DistanceBetween {
         List<Integer> peek = new LinkedList<>();
         peek.add(0);
         for (int i = 1; i < blocks.length - 1; i++) {
-            if ((blocks[i - 1] <= blocks[i]) && blocks[i] > blocks[blocks.length + 1]) {
+            if ((blocks[i - 1] <= blocks[i]) && blocks[i] > blocks[i + 1]) {
                 peek.add(i);
             }
         }
