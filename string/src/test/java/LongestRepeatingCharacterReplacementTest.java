@@ -17,7 +17,7 @@ class LongestRepeatingCharacterReplacementTest {
 
         int aababba = sut.characterReplacement("AABABBA", 4);
 
-        Assertions.assertEquals(4, aababba);
+        Assertions.assertEquals(7, aababba);
     }
 
     @Test
