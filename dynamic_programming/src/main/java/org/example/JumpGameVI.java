@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -33,7 +32,7 @@ public class JumpGameVI {
 
     public int maxResultOptimize(int[] nums, int k) {
         int[] mem = new int[nums.length];
-        SortedMap<Integer, Integer> treeMap = new TreeMap(Comparator.reverseOrder());
+        SortedMap<Integer, Integer> treeMap = new TreeMap<>();
 
         Arrays.fill(mem, Integer.MIN_VALUE);
         mem[0] = nums[0];
@@ -46,12 +45,12 @@ public class JumpGameVI {
                 if (integer == 1) {
                     treeMap.remove(mem[start]);
                 }
-                if (integer == 2) {
-                    treeMap.put(mem[start], 1);
+                if (integer != 1) {
+                    treeMap.put(mem[start], integer - 1);
                 }
                 start++;
             }
-            mem[end] = treeMap.firstKey() + nums[end];
+            mem[end] = treeMap.lastKey() + nums[end];
             Integer integer = treeMap.getOrDefault(mem[end], 0);
             treeMap.put(mem[end], integer + 1);
 
