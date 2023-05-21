@@ -4,7 +4,7 @@ import java.util.List;
 
 public class LongestIncreasingSubsequence {
     public int lengthOfLIS(int[] nums) {
-        return lengthOfLISOptimize(nums, 0, Integer.MIN_VALUE);
+        return lengthOfLISOptimize(nums, nums.length, 1);
     }
 
 
@@ -23,21 +23,7 @@ public class LongestIncreasingSubsequence {
         return result;
     }
 
-    private int helper(int[] nums, int length, int i, List<Integer> linkedList, int maxSofar) {
-        if (i == length) {
-            return Math.max(maxSofar, linkedList.size());
-        } else {
-            if (linkedList.isEmpty() || nums[i] > linkedList.get(linkedList.size() - 1)) {
-                linkedList.add(nums[i]);
-                int addX = helper(nums, length, i + 1, linkedList, maxSofar);
-                linkedList.remove((Object) nums[i]);
-                int notAddX = helper(nums, length, i + 1, linkedList, maxSofar);
-                return Math.max(addX, notAddX);
-            } else {
-                return helper(nums, length, i + 1, linkedList, maxSofar);
 
-            }
-        }
-    }
+
 
 }
