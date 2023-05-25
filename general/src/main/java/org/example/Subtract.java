@@ -3,7 +3,6 @@ package org.example;
 public class Subtract {
 
     public static void main(String[] args) {
-        Main instance = new Main();
         System.out.println(preprocess("2123", "987" ));
     }
 

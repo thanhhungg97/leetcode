@@ -3,8 +3,10 @@ package org.example;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Stack;
+import java.util.List;
+import java.util.Map;
 
 public class ShortestUnsortedContinuousSubarray {
     public int findUnsortedSubarray(int[] nums) {
@@ -67,4 +69,32 @@ public class ShortestUnsortedContinuousSubarray {
         return Math.max(0, j - i + 1);
     }
 
+
+    long getTripCount(List<List<Integer>> locations, Integer startLocation, Integer endLocation) {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < locations.size(); i++) {
+            Integer unit = locations.get(i).get(0);
+            Integer location = locations.get(i).get(1);
+            if (!map.containsKey(unit)) {
+                map.put(unit, new LinkedList<>());
+
+            }
+            map.get(unit).add(location);
+        }
+
+        return map.values().stream().filter(item -> isValid(item, startLocation, endLocation)).count();
+    }
+
+    boolean isValid(List<Integer> list, Integer startLocation, Integer endLocation) {
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i - 1) == startLocation && list.get(i) == endLocation) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+
 }
+
