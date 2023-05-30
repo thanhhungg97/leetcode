@@ -7,38 +7,29 @@ public class StoneGameII {
         return helper(piles, 1, 0, true, mem);
     }
 
-    private int helper(int[] piles, int m, int index, boolean isPickMax, int[][][] mem) {
+    private int helper(int[] piles, int m, int index, boolean alice, int[][][] mem) {
         if (index >= piles.length) {
             return 0;
         } else {
-            int indexxxx = isPickMax ? 1 : 0;
-            if (mem[index][m][indexxxx] != 0) {
-                return mem[index][m][indexxxx];
+            int aliceInt = alice ? 1 : 0;
+            if (mem[index][m][aliceInt] != 0) {
+                return mem[index][m][aliceInt];
             }
-            if (isPickMax) {
-                int max = Integer.MIN_VALUE;
-                int total = 0;
-                for (int i = 0; i <= 2 * m - 1; i++) {
-                    int newIndex = index + i;
-                    if (newIndex < piles.length) {
-                        total += piles[newIndex];
-                        max = Math.max(max, total + helper(piles, Math.max(i + 1, m), newIndex + 1, false, mem));
+            int res = alice ? 0 : Integer.MAX_VALUE;
+            int total = 0;
+            for (int curM = 1; curM <= 2 * m; curM++) {
+                int newIndex = index + curM;
+                if (newIndex <= piles.length) {
+                    total += piles[newIndex - 1];
+                    if (alice) {
+                        res = Math.max(res, total + helper(piles, Math.max(curM, m), newIndex, false, mem));
+                    } else {
+                        res = Math.min(res, helper(piles, Math.max(curM, m), newIndex, true, mem));
                     }
                 }
-                mem[index][m][indexxxx] = max;
-                return max;
-            } else {
-                int min = Integer.MAX_VALUE;
-                for (int i = 0; i <= 2 * m - 1; i++) {
-                    int newIndex = index + i;
-                    if (newIndex < piles.length) {
-                        min = Math.min(min, helper(piles, Math.max(i + 1, m), newIndex + 1, true, mem));
-                    }
-                }
-                mem[index][m][indexxxx] = min;
-                return min;
             }
+            mem[index][m][aliceInt] = res;
+            return res;
         }
-
     }
 }
